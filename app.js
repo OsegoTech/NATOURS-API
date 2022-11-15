@@ -8,11 +8,17 @@ const userRouter = require('./routes/userRoutes')
 //initializing an instance of express
 const app = express();
 
+
 //3rd Party MiddleWares
-app.use(morgan('dev'))
+console.log(process.env.NODE_ENV);
+if (process.env.NODE_ENV === 'development'){
+  app.use(morgan('dev'))
+}
+
 
 //Include a middleware which helps in the POST method
 app.use(express.json());
+app.use(express.static(`${__dirname}/public`))
 
 //Creating our owm middleware
 app.use((req, res, next) => {
