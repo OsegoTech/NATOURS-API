@@ -1,6 +1,20 @@
+const mongoose = require('mongoose')
 const dotenv = require('dotenv')
 dotenv.config({path: './.env'})
 const app = require('./app')
+
+const DB = process.env.DATABASE.replace('<PASSWORD>', process.env.DATABASE_PASSWORD)
+mongoose.connect(DB,{
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useFindAndModify: false
+}).then(() => console.log("DB connecvtion successfull"))
+
+const toursSchema = new mongoose.Schema({
+  name: String,
+  rating: Number,
+  price: Number
+})
 
 
 
