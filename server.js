@@ -8,14 +8,7 @@ mongoose.connect(DB,{
   useNewUrlParser: true,
   useCreateIndex: true,
   useFindAndModify: false
-}).then(() => console.log("DB connecvtion successfull"))
-
-const toursSchema = new mongoose.Schema({
-  name: String,
-  rating: Number,
-  price: Number
-})
-
+}).then(() => console.log("DB connection successful"))
 
 
 console.log(process.env);
